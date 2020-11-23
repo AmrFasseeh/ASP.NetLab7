@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Course>
+@{
+    ViewBag.title = "Course Home";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Course Duration</th>
+                        <th>Edit/Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any() == false)
+                    {
+                        <tr>
+                            <td colspan="2" class="bg-red">Table is Empty</td>
+                        </tr>
+                    }
+                    else
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CourseId</td>
+                                <td>@item.CourseName</td>
+                                <td>@item.Duration</td>
+                                <td>@Html.ActionLink("Edit", "Post", "Course", new { id = item.CourseId }, new { @class = "btn btn-info" }) / @Html.ActionLink("Delete", "Delete", "Course", new { id = item.CourseId }, new { @class = "btn btn-danger" })</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12">
+            @Html.ActionLink("Add Course", "Create", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>

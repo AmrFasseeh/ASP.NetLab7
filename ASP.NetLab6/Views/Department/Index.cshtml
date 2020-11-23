@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Department>
+@{
+    ViewBag.title = "Depts Home";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Dept ID</th>
+                            <th>Dept Name</th>
+                            <th>Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any() == false)
+                        {
+                            <tr>
+                                <td colspan="2" class="bg-red">Table is Empty</td>
+                            </tr>
+                        }
+                        else
+                        {
+
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.DeptId</td>
+                                    <td>@item.Name</td>
+                                    <td>@Html.ActionLink("Edit", "Post", "Department", new { id = item.DeptId }, new { @class = "btn btn-info" }) / @Html.ActionLink("Delete", "Delete", "Department", new { id = item.DeptId }, new { @class = "btn btn-danger" })</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12">
+                @Html.ActionLink("Add Dept", "Create", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>

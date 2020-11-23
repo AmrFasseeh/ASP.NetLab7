@@ -1,0 +1,17 @@
+﻿@model Department
+@{
+    ViewBag.title = "Depts Edit";
+}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="/Department/Post/@Model.DeptId" method="post">
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Name, new { @for = "Name" })
+                    @Html.TextBoxFor(d => d.Name, new { @class = "form-control", value = Model.Name })
+                </div>
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+        </div>
+    </div>
+</div>

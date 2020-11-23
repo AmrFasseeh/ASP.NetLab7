@@ -1,0 +1,18 @@
+﻿@model Department
+@{
+    ViewBag.title = "Dept Create";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="/Department/Create" method="post">
+                    <div class="form-group">
+                        @Html.LabelFor(d => d.Name, new { @for = "Name" })
+                        @Html.TextBoxFor(d => d.Name, new { @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>

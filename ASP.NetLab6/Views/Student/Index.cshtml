@@ -1,0 +1,46 @@
+﻿@model IQueryable<Student>
+@{
+    ViewBag.title = "Students Home";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Department</th>
+                        <th>Edit/Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any() == false)
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center text-light bg-danger">Table is Empty</td>
+                        </tr>
+                    }
+                    else
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Age</td>
+                                <td>@item.Department.Name</td>
+                                <td>@Html.ActionLink("Edit", "Post", "Student", new { id = item.id }, new { @class = "btn btn-info" }) / @Html.ActionLink("Delete", "Delete", "Student", new { id = item.id }, new { @class = "btn btn-danger" })</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12">
+            @Html.ActionLink("Add Student", "Create", "Student", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>

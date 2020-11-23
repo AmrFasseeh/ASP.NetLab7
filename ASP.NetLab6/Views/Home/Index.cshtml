@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.title = "Home";
+}
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h1>Home Page</h1>
+                @Html.ActionLink("Departments", null, "Department", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Students", null, "Student", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Courses", "Index", "Course", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
